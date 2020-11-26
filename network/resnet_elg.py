@@ -149,7 +149,7 @@ class ResNet(nn.Module):
         x2 = self.avgpool(x)
         x = x2.view(x2.size(0), -1)
         x = self.fc(x)
-        return x, x2
+        return  x2
 
 
 def resnet18(pretrained=False, **kwargs):

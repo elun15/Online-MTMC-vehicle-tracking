@@ -9,6 +9,7 @@ import torch
 import numpy as np
 from torchvision import transforms
 from misc import normalize as norm
+import torch.nn.functional as F
 
 
 class features():
@@ -119,7 +120,9 @@ class features():
         features = torch.squeeze(features)
 
         # features_np = features.detach().cpu().numpy()
-        features__norm = norm.l2_norm(features)
+        # features__norm = norm.l2_norm(features)
+
+        features_norm = F.normalize(features, p=2, dim = 0)
         features_np = features.detach().cpu().numpy()
         return features_np
 

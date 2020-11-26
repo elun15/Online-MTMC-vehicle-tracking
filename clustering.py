@@ -5,14 +5,11 @@
 ################################
 '''
 
-
 import numpy as np
 from scipy.cluster import hierarchy
 from thirdparty import sklearn_dunn
 import matplotlib.pyplot as plt
 from sklearn.cluster import AgglomerativeClustering
-
-
 
 class clustering():
 
@@ -49,9 +46,6 @@ class clustering():
             'yy': None,
             'feature_descriptor': None}
         return det
-
-
-
 
 
     def compute_clusters(self, distance_matrix, association_matrix):
@@ -112,7 +106,6 @@ class clustering():
 
         return idx_clusters, optimal_clusters
 
-
     def display_detections_cluster(self,sct_f, det_in_cluster,cl):
 
         for d  in range(det_in_cluster.__len__()):
@@ -121,17 +114,8 @@ class clustering():
             yw = sct_f['yw'][det]
             plt.plot(xw, yw, 'x', lineWidth = 1, markerSize = 10, color = self.colors[cl])
 
-
     def display_centroid_cluster(self, mean_xw, mean_yw, cl):
 
             plt.scatter(mean_xw, mean_yw, s = 80, facecolors='none', edgecolors=self.colors[cl])
             plt.text(mean_xw+0.000005, mean_yw+0.000005, str(cl), fontsize=15, color='black')
             plt.title('Tracks')
-
-
-
-
-
-
-
-

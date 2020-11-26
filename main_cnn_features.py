@@ -47,14 +47,26 @@ import clustering
 import tracking
 import torchfile
 import torchvision.transforms as transforms
+from misc import nms
 
+from network import net_ristani
+import argparse
+import yaml
+
+
+parser = argparse.ArgumentParser(description='Training classifier pair of cars')
+
+parser.add_argument('--ConfigPath', metavar='DIR', help='Configuration file path')
+
+
+global CONFIG
 
 # from torch.utils.serialization import load_lua
 
 class mtmc():
-    def __init__(self, dataset_dir, sct_tracker):
+    def __init__(self, dataset_dir, detector):
         self.dataset_root_dir = dataset_dir
-        self.sct_tracker = sct_tracker
+        self.detector = detector
 
         self.max_frame = {'S01': 2132,
                           'S02': 2110,
@@ -126,8 +138,8 @@ class mtmc():
         self.colors = colors.distinguishable_colors()
 
         self.preprocess_flag = False
-        self.display = True
-        self.dist_th = 0.00008
+        self.display = False
+        self.dist_th = CONFIG['DIST_TH']
         self.global_tracks = list(list())
 
         self.global_tracks.append(list())
@@ -139,6 +151,11 @@ class mtmc():
 
 if __name__ == '__main__':
 
+    # Decode CONFIG file information
+    args = parser.parse_args()
+    CONFIG = yaml.safe_load(open(args.ConfigPath, 'r'))
+
+
     contador_total_escritura = 0
     contador_total_sct = 0
     '''
@@ -146,13 +163,14 @@ if __name__ == '__main__':
     Test set: S02, S05
     '''
     dataset_dir = '/home/vpu/Datasets/AIC20'
-    results_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'results')
-    sct_tracker = 'mtsc_tc_ssd512'
+    results_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ablation_study')
+    detector = CONFIG['DETECTOR']
+    # sct_tracker = 'mtsc/mtsc_tc_ssd512'
     # sct_tracker = 'mtsc_tc_mask_rcnn'
     set = ['validation']  # ['test' 'train']
 
     # Initialize global mtmc class
-    mtmc = mtmc(dataset_dir, sct_tracker)
+    mtmc = mtmc(dataset_dir, detector)
 
     # Inicialize cam class
     cam = camera.camera(os.path.join(mtmc.dataset_root_dir, 'calibration'))
@@ -166,31 +184,66 @@ if __name__ == '__main__':
     ### LOAD NET
     # model_cls = 'ResNet50_AICC19_classifier_2048_best.pth.tar'
     # model= 'ResNet50_AIC20_veri_classifier_best_focal_triplet.pth.tar'  # triplet loss
-    # model= 'ResNet50_AIC20_veri_focal_classifier_best.pth.tar'  # focal loss
+    #model= 'ResNet50_AIC20_veri_focal_classifier_best.pth.tar'  # focal loss
     # model = 'ResNet50_AIC20_veri_focal_imaug_classifier_best.pth.tar'
-    model = "ResNet50_AIC20_veri_classifier_focalimaugfreeze6_best.pth.tar"
+    # model = "ResNet50_AIC20_veri_classifier_focalimaugfreeze6_best.pth.tar"
+    # model = "ResNet50_AIC20_veri_classifier_latest_imaug_until5.pth.tar"
+    # model = "ResNet101_AIC20_veri_classifier_latest_resnet101_until6_lr01.pth.tar"
+    #model = "ResNet101_AIC20_veri_classifier_latest_noimaug_lr01_until5.pth.tar"
 
+
+
+    # model = "ResNet50_AIC20_basefocal_classifier_best.pth.tar"
+    # model = "ResNet50_AIC20_base_classifier_best.pth.tar"
+    # model = "ResNet50_AIC20_IDBasefocal_imaug_classifier_latest.pth.tar"
+    # # # # model = "ResNet50_AIC20_VeRi_focalnoimaug_classifier_best.pth.tar"
+
+    # model = "ResNet50_AIC20_baseimaug_classifier_best.pth.tar"
+    # model = "ResNet50_AIC20_baselayer5focal_classifier_latest.pth.tar"
+    # model = "ResNet50_AIC20_baselayer5_classifier_latest.pth.tar"
+    # model = "ResNet50_AIC20_layer5_imaug_lr001classifier_latest.pth.tar"
+    # model = "ResNet50_AIC20_layer5_imaug_lr0001_best.pth.tar"
+    # model = "ResNet50_AIC20_layer5_focal_imaug_decay10_lr01classifier_latest.pth.tar"
+    # model = "ResNet50_AIC20_layer5_focal_imaug_decay10_lr01classifier_latest_prec95.pth.tar"
+    # model = "ResNet50_AIC20_VERI_layer5classifier_latest.pth.tar"
+    # model = "ResNet50_AIC20_VERI_layer5_focal classifier_best.pth.tar"
+    # model = "ResNet50_AIC20_VERI_layer5_focal_imaugclassifier_latest.pth.tar"
+    # model = "ResNet50_AIC20_VERI_layer5_imaugclassifier_latest.pth.tar"
+    # model = "ResNet50_AIC20_vERI_layer5_focal_imaug_prec94_classifier_best.pth.tar"
+
+    # model = "ResNet50_AIC20_VERI_layer5_CE_imaug_1024classifier_best.pth.tar"
+    # model = "ResNet50_AIC20_VERI_layer5_CE_imaug_512classifier_latest.pth.tar"
+    # model = "ResNet50_AIC20_VERI_layer5_CE_imaug_4096classifier_best.pth.tar"
+
+
+    # model = "ResNet50_AIC20_ristani_imaug_01_classifier_best.pth.tar"
+    # model = "ResNet50_AIC20_VERI_ristani_lr01_imaug_classifier_best.pth.tar"
+    # # # # #
+
+    model = CONFIG['MODEL']
     model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'models/' + model)
-
-    net = net_id_classifier.net_id_classifier('ResNet50', 903)
+    # # # # # #
+    net = net_id_classifier.net_id_classifier('ResNet50', CONFIG['NUM_IDS'])
     weights = torch.load(model_path)['state_dict']
     net.load_state_dict(weights, strict=True)
+
+
+
+    # net = net_ristani.net('ResNet50')
+    # net.load_state_dict(weights, strict=True)
+
+
+    # Features model pretrined
+    # net = resnet_elg.resnet50(pretrained=True)
 
     net.cuda()
     net.eval()
 
-
-    # Features class
-    # net = resnet_elg.resnet50(pretrained=True)
-    # model_name = 'reid.pth.pth' #reid , net_last resnet50_optimizer_120
-    # model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'models/' + model_name)
-
-    feat = features.features(aicc, net, 'both')  # appearance_only , distance_only
-    # feat.load_model(model_path, model_path)
+    feat = features.features(aicc, net, CONFIG['MODE'])
 
 
     # # Tracking class
-    track = tracking.tracking(mtmc)
+    track = tracking.tracking(mtmc,CONFIG)
 
 
     # Pre-processing needs to be executed only once after downloading the AICC19 dataset
@@ -219,7 +272,7 @@ if __name__ == '__main__':
             sct.new(s)
 
             # Fill it with sct data: e.g.  sct.data[scene][camera] -> [ndarray]
-            sct.load(st, s, mtmc.offset, flag_filter_size=True)
+            sct.load(st, s, mtmc.offset, flag_filter_size=CONFIG['FLAG_FILTER_SIZE'], score_th=CONFIG['SCORE_TH'])
 
             # Load homography matrices
             cameras = os.listdir(os.path.join(mtmc.dataset_root_dir, st, s))
@@ -240,8 +293,7 @@ if __name__ == '__main__':
         scenarios.sort()
 
         # Results file
-        file_results = os.path.join(results_dir, s, 'v38.txt')
-
+        file_results = os.path.join(results_dir, s, CONFIG['ID'] + '.txt')
         f_id = open(file_results, 'w+')
 
         # Scenarios
@@ -267,10 +319,15 @@ if __name__ == '__main__':
                     # print('Processing ' + str(s) + ' frame ' + str(f) + ' camera ' + str(c))
 
                     frame_img = Image.open(os.path.join(mtmc.dataset_root_dir, st, s, c, 'img', '%06d.jpg' % f))
-                   # display.show_frame(frame_img,c)
+                    # display.show_frame(frame_img,c)
 
                     sct_array = np.array(sct.data[s][c])
                     sct_f_data = sct_array[sct_array[:, 0] == f, :]
+
+                    #NMS
+                    # if sct_f_data.shape[0] != 0:
+                    #     sct_f_data = nms.non_max_suppression(sct_f_data, sct_f_data[:, 6])
+
 
                     # Fill sct_f dictionary with current frame information
                     for i in range(sct_f_data.shape[0]):
@@ -347,8 +404,7 @@ if __name__ == '__main__':
                     # Spatial distance
                     xy = np.transpose(np.stack((np.array(sct_f['xw']), np.array(sct_f['yw'])), axis=0))
 
-                    dist_spatial = pairwise_distances(xy, xy,
-                                                       metric='euclidean')  # dist2 = pdist(xy,metric= metric)  #euclidean cosine cityblock
+                    dist_spatial = pairwise_distances(xy, xy, metric='euclidean')  # dist2 = pdist(xy,metric= metric)  #euclidean cosine cityblock
 
                     # Set diagonal to 1 to avoid zeros
                     dist_spatial = dist_spatial + (np.eye(dist_spatial.shape[0]))
@@ -368,7 +424,8 @@ if __name__ == '__main__':
 
                         features_all = np.array(sct_f['features'])
                         dist_features = pairwise_distances(features_all, features_all, metric='euclidean') #CITIBLOCK PROBAR
-                        # dist_features_norm = (F.softmax(torch.from_numpy(dist_features), dim=1)).numpy()
+
+
                         #
                         if feat.characteristic == 'distance':
                             restricted_dist_features, association_matrix = feat.apply_restrictions(dist_spatial,
@@ -445,7 +502,24 @@ if __name__ == '__main__':
                     # plt.show(block = False)
                     # plt.close('all')
 
+                    ''' ONLY CLUSTERING SAVING - start '''
+                    # for i in range(optimal_clusters):
+                    #
+                    #     for det in range(clust.clusters_frame[i]['det'].__len__()):
+                    #         new_w = clust.clusters_frame[i]['det'][det]['w'] + ( clust.clusters_frame[i]['det'][det]['w'] * 0.6)
+                    #         new_h = clust.clusters_frame[i]['det'][det]['h'] + (  clust.clusters_frame[i]['det'][det]['h'] * 0.6)
+                    #
+                    #         arg1 = clust.clusters_frame[i]['det'][det]['id_cam']
+                    #         arg2 = clust.clusters_frame.index(clust.clusters_frame[i]) + 1
+                    #         arg3 = f
+                    #         arg4 = clust.clusters_frame[i]['det'][det]['x'] +  round(clust.clusters_frame[i]['det'][det]['w'] / 2) - round(new_w / 2)
+                    #         arg5 = clust.clusters_frame[i]['det'][det]['y'] +  round(clust.clusters_frame[i]['det'][det]['h'] / 2) - round(new_h / 2)
+                    #         arg6 = clust.clusters_frame[i]['det'][det]['w'] + (clust.clusters_frame[i]['det'][det]['w'] * 0.6)
+                    #         arg7 = clust.clusters_frame[i]['det'][det]['h'] + (clust.clusters_frame[i]['det'][det]['h'] * 0.6)
+                    #
+                    #         f_id.write("%d %d %d %d %d %d %d -1 -1\n" % (arg1, arg2, arg3, arg4, arg5, arg6, arg7))
 
+                    ''' ONLY CLUSTERING SAVING - end '''
 
 
                 # CLUSTERS - TRACKS   ASSOCIATION
@@ -494,8 +568,8 @@ if __name__ == '__main__':
 
                         for det in range(mtmc.global_tracks[f][i]['det'].__len__()):
 
-                            new_w = round(mtmc.global_tracks[f][i]['det'][det]['w'] + mtmc.global_tracks[f][i]['det'][det]['w'] * 0.6)
-                            new_h = round(mtmc.global_tracks[f][i]['det'][det]['h'] + mtmc.global_tracks[f][i]['det'][det]['h'] * 0.6)
+                            new_w = round(mtmc.global_tracks[f][i]['det'][det]['w'] + mtmc.global_tracks[f][i]['det'][det]['w'] * 0.2)
+                            new_h = round(mtmc.global_tracks[f][i]['det'][det]['h'] + mtmc.global_tracks[f][i]['det'][det]['h'] * 0.2)
 
 
 
@@ -517,6 +591,7 @@ if __name__ == '__main__':
                             '''
 
                             f_id.write("%d %d %d %d %d %d %d -1 -1\n" % (arg1, arg2, arg3, arg4, arg5, arg6, arg7))
+
             f_id.close()
 
             a=1

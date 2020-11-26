@@ -1,0 +1,11 @@
+ID: v147_gt
+DETECTOR: det/gt
+SCORE_TH: 0.2
+NUM_IDS: 903
+FLAG_FILTER_SIZE: False
+MODE: both
+MODEL: ResNet50_AIC20_VERI_layer5_imaugclassifier_latest.pth.tar
+DIST_TH: 0.00008
+BLIND_OCCLUSION: True
+REPROJECTION: False
+SIZE_FC: 2048

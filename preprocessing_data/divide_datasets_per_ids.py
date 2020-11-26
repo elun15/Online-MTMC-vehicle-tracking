@@ -95,10 +95,10 @@ if __name__ == '__main__':
     root_dir = os.path.dirname(os.path.abspath(__file__))
 
     params = dataset_parameters()
-    mode = 'validation'
+    mode = 'validation_S02'
     # Original dataset directory
     dataset_root_dir = os.path.join('/home/vpu/Datasets/AIC20', mode)
-    subset_dir = '/home/vpu/Datasets/AIC20/validation_per_id'
+    subset_dir = '/home/vpu/Datasets/AIC20/S02_per_id'
 
     scenarios = os.listdir(dataset_root_dir)
 

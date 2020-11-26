@@ -79,7 +79,7 @@ max_frame={'S01': 2110,
            }
 
 
-def  process(file,offset, scenario, dataset_dir, output_file):
+def  process(file,offset, scenario, dataset_dir, output_file,i):
 
     res = np.loadtxt(file)
 
@@ -106,9 +106,26 @@ def  process(file,offset, scenario, dataset_dir, output_file):
 
     np.savetxt(output_file, res, delimiter=',')
 
+    os.makedirs('/home/vpu/AICityChallengeTrack1/amilan-motchallenge-devkit/res/AIC20/ablation_study/v'+  str(i),exist_ok=True)
+    np.savetxt('/home/vpu/AICityChallengeTrack1/amilan-motchallenge-devkit/res/AIC20/ablation_study/v'+  str(i) + '/S02.txt', res, delimiter=',')
+
 if __name__ == '__main__':
-    dataset_dir = '/home/vpu/Datasets/AIC20/validation'
-    results_file = '/home/vpu/Clustering-based-Multi-Target-Multi-Camera-Tracking/results/S02/v38.txt'
-    unsync_file = '/home/vpu/Clustering-based-Multi-Target-Multi-Camera-Tracking/results/S02/v38_unsync.txt'
+
     scenario = 'S02'
-    process(results_file,offset, scenario, dataset_dir, unsync_file)
+
+    # for i in range(149,152):
+    #
+    #
+    #     results_file = './../ablation_study/' + scenario + '/v'+str(i)+ '.txt'
+    #     unsync_file = './../ablation_study/' + scenario + '/v' +str(i) + '_unsync.txt'
+    #
+    #     dataset_dir = '/home/vpu/Datasets/AIC20/validation'
+    #
+    #     process(results_file,offset, scenario, dataset_dir, unsync_file,i)
+
+    results_file = './../ablation_study/' + scenario + '/' + 'v147_gt' + '.txt'
+    unsync_file = './../ablation_study/' + scenario + '/' + 'v147_gt' + '_unsync.txt'
+
+    dataset_dir = '/home/vpu/Datasets/AIC20/validation'
+
+    process(results_file, offset, scenario, dataset_dir, unsync_file, '147_gt')

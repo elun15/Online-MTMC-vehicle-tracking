@@ -13,13 +13,14 @@ import numpy as np
 from PIL import Image
 from scipy import interpolate
 from scipy.spatial.distance import cdist
+from misc import nms
 
 
 class sct():
 
     def __init__(self, mtmc):
         self.data = {}
-        self.tracker = mtmc.sct_tracker
+        self.detector = mtmc.detector
         self.dataset_root_dir = mtmc.dataset_root_dir
         self.fps = 10 # For AICC19
 
@@ -55,16 +56,21 @@ class sct():
     def new(self,scene):
         self.data[scene] = {}
 
-    def load(self,set,scene,offset, flag_filter_size):
+    def load(self,set,scene,offset, flag_filter_size,score_th):
 
         cameras = os.listdir(os.path.join(self.dataset_root_dir, set, scene))
         for c in cameras:
             # Directory
-            dir_file_sct = os.path.join(self.dataset_root_dir, set, scene, c, 'mtsc', self.tracker + '.txt')
+            dir_file_sct = os.path.join(self.dataset_root_dir, set, scene, c,  self.detector + '.txt')
             data = np.loadtxt(dir_file_sct, delimiter=',')
 
-            if flag_filter_size:
-                data = data[(data[:, 4] * data[:, 5]) > 3350, :]
+            #Filter detections by score
+            data = data[data[:, 6] > score_th , :]
+
+
+            if flag_filter_size == True:
+                data = data[(data[:, 4] * data[:, 5]) > 2000, :] #3350 4150 0.2
+
 
 
             # Load ROI and filter sct before saving into class

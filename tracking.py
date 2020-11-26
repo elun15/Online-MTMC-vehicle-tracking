@@ -26,12 +26,13 @@ from munkres import Munkres, print_matrix, make_cost_matrix, DISALLOWED
 
 class tracking():
 
-    def __init__(self, mtmc):
+    def __init__(self, mtmc,CONFIG):
         self.tracks_KF = list()
         self.id_track = 1
         self.unmatched_tracks, self.unmatched_clusters = [], []
         self.matches = None
         self.updated_flag = 0
+        self.CONFIG = CONFIG
 
     def new_track(self, id, centroid, kalman, cluster_id ):
         track = {
@@ -243,7 +244,7 @@ class tracking():
                 # cost[i,:] = (np.sum(pow(difference,2),axis = 1)).T #comprobar que la suma se hace bien
                 cost[i, :] = np.linalg.norm((clusters_position - np.matlib.repmat(tracks_position[i, :], num_clusters, 1)), axis=1)
 
-            pos_track_to_remove = np.where(np.sum((cost < 0.00008) * 1, axis=1) == 0)[0]
+            pos_track_to_remove = np.where(np.sum((cost < self.CONFIG['DIST_TH']) * 1, axis=1) == 0)[0]
             if len(pos_track_to_remove) > 0:
                 a = 1
 
@@ -254,7 +255,7 @@ class tracking():
 
              #Add filtering clusters that are close to all tracks
 
-            pos_cluster_to_remove = np.where(np.sum((cost < 0.00009) * 1, axis=0) == 0)[0]
+            pos_cluster_to_remove = np.where(np.sum((cost < (self.CONFIG['DIST_TH']+0.00001)) * 1, axis=0) == 0)[0]
 
             if len(pos_cluster_to_remove) > 0:
                 a = 1
@@ -270,22 +271,6 @@ class tracking():
               self.assign_detections_to_tracks(cost_filtered,clusters, pos_track_HA, ids_track_HA,tracks_id, pos_track_to_remove, pos_cluster_HA, ids_cluster_HA, clusters_id, pos_cluster_to_remove)
               a=1
 
-              '''
-              prueba con MUNKRES
-
-             '''
-              # cost_list = cost.tolist()
-              # for i in range(cost_list.__len__()):
-              #     for j in range(cost_list[i].__len__()):
-              #         if (cost_list[i][j] > 0.00008):
-              #             cost_list[i][j] = 100
-              #     # vals = [x for x in cost_list[i] if x is not DISALLOWED]
-              #     # if len(vals) == 0:
-              #     #     a=1
-              #
-              # m = Munkres()
-              # indexes = m.compute(cost_list)
-              # a=1
 
 
         else:
@@ -373,21 +358,34 @@ class tracking():
 
                    if len(valid_matches) != 0:
                        posible_features = dist_features[u_cl, valid_matches]
+                       #CAMBIAR
+                       # posible_features = dist_spatial[u_cl, valid_matches]
+
+
 
                        detection_to_join = valid_matches[np.where(posible_features == np.amin(posible_features))[0]]
 
 
                        cluster_to_join = np.array([])
         #              look for the cluster containing this detection
+                       "ANTIGUO funcionando bien hasta uso de det en vez de "
+        #                for cl in range(0, clusters.__len__()):
+        #                    for det in clusters[cl]['det']:
+        #                        if det['id_global'] == detection_to_join:
+        #                            dets_in_cluster_to_join = [i['id_global'] for i in clusters[cl]['det']]
+        #                            if 100 not in association_matrix[clusters[u_cl]['det'][0]['id_global'],dets_in_cluster_to_join] :
+        #                                cluster_to_join = cl
+        #                                break
+                       "Nuevo a raiz de un error 7/10"
                        for cl in range(0, clusters.__len__()):
                            for det in clusters[cl]['det']:
                                if det['id_global'] == detection_to_join:
                                    dets_in_cluster_to_join = [i['id_global'] for i in clusters[cl]['det']]
-                                   if 100 not in association_matrix[clusters[u_cl]['det'][0]['id_global'],dets_in_cluster_to_join] :
+                                   if 100 not in association_matrix[
+                                       clusters[u_cl]['det'][0]['id_global'], dets_in_cluster_to_join]:
                                        cluster_to_join = cl
                                        break
-                                   # cluster_to_join = cl
-                                   # break
+
 
                        # look for track containing this cluster
 
@@ -406,8 +404,12 @@ class tracking():
     def delete_lost_tracks(self):
 
 
+        if self.CONFIG['BLIND_OCCLUSION']:
+            invisible_for_too_long = 10
+        else:
+            invisible_for_too_long = 2
 
-        invisible_for_too_long = 10
+
         age_threshold = 8
 
 
@@ -446,6 +448,10 @@ class tracking():
         # a = [item['det'] for item in clusters if clusters.index(item) in clusters_id]
 
         #
+        if self.CONFIG['BLIND_OCCLUSION'] == True:
+            invisible = 2
+        else:
+            invisible = 1
 
 
         if num_tracks != 0:
@@ -453,7 +459,7 @@ class tracking():
 
             for i in range(num_tracks):
 
-                if self.tracks_KF[i]['consecutiveInvisibleCount'] < 2:
+                if self.tracks_KF[i]['consecutiveInvisibleCount'] < invisible: #1 2
 
                     global_tracks[f].append(self.new_global_track())
                     global_tracks[f][-1]['id'] = self.tracks_KF[i]['id']
@@ -470,26 +476,26 @@ class tracking():
 
 
 
-                    #REPROYECTION
-                    if from_cluster.size == 0:
+                    if self.CONFIG['REPROJECTION']== True:
+                        if from_cluster.size == 0:
 
-                        pos_prev = [global_tracks[f-1].index(item) for item in global_tracks[f-1] if item['id'] == global_tracks[f][-1]['id']]
-                        global_tracks[f][-1]['det'] = global_tracks[f-1][pos_prev[0]]['det']
-                        prev_bbox = global_tracks[f - 1][pos_prev[0]]['det'][0]
-                        # prev_basex = prev_bbox['x'] + (prev_bbox['w']/2)
-                        # prev_basey = prev_bbox['y'] + (prev_bbox['h'])
+                            pos_prev = [global_tracks[f-1].index(item) for item in global_tracks[f-1] if item['id'] == global_tracks[f][-1]['id']]
+                            global_tracks[f][-1]['det'] = global_tracks[f-1][pos_prev[0]]['det']
+                            prev_bbox = global_tracks[f - 1][pos_prev[0]]['det'][0]
+                            # prev_basex = prev_bbox['x'] + (prev_bbox['w']/2)
+                            # prev_basey = prev_bbox['y'] + (prev_bbox['h'])
 
-                        centroid_x = self.tracks_KF[i]['xw']
-                        centroid_y = self.tracks_KF[i]['yw']
+                            centroid_x = self.tracks_KF[i]['xw']
+                            centroid_y = self.tracks_KF[i]['yw']
 
-                        base_x, base_y = cam.apply_homography_world_to_image(centroid_x, -centroid_y,
-                                                                             cam.homography_matrix[
-                                                                                 'c00' + str(prev_bbox['id_cam'])])
+                            base_x, base_y = cam.apply_homography_world_to_image(centroid_x, -centroid_y,
+                                                                                 cam.homography_matrix[
+                                                                                     'c00' + str(prev_bbox['id_cam'])])
 
-                        x = np.round(base_x - (prev_bbox['w'] / 2))
-                        y = np.round(base_y - (prev_bbox['h']))
-                        global_tracks[f][-1]['det'][0]['x'] = int(x)
-                        global_tracks[f][-1]['det'][0]['y'] = int(y)
+                            x = np.round(base_x - (prev_bbox['w'] / 2))
+                            y = np.round(base_y - (prev_bbox['h']))
+                            global_tracks[f][-1]['det'][0]['x'] = int(x)
+                            global_tracks[f][-1]['det'][0]['y'] = int(y)
 
             for item in global_tracks[f]:
                 for item2 in item['det']:
@@ -511,7 +517,7 @@ class tracking():
                         box2 = np.array((det2[0], det2[1], det2[0] + det2[2], det2[1] + det2[3]))                    #
                         iou = bbox.bbox_iou(torch.from_numpy(box1).cuda(),torch.from_numpy(box2).cuda())
                         if iou.item() > 0.8:
-                            p = 3
+
                             index1 = dets.index(det1)
                             index2 = dets.index(det2)
                             id_track1 = ids_track[index1]
