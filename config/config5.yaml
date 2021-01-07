@@ -1,10 +1,11 @@
-ID: v125
-DETECTOR: det/det_mask_rcnn
-SCORE_TH: 0.2
+ID: v204
+DETECTOR: det/det_Efficient8
+SCORE_TH: 0.3
 NUM_IDS: 903
 FLAG_FILTER_SIZE: False
 MODE: both
-MODEL: ResNet50_AIC20_VERI_layer5_imaugclassifier_latest.pth.tar
+MODEL: ResNet50_AIC20_VERI_layer5_focal classifier_best.pth.tar
 DIST_TH: 0.00008
-BLIND_OCCLUSION: True
+BLIND_OCCLUSION: False
 REPROJECTION: False
+SIZE_FC: 2048

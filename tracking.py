@@ -363,9 +363,9 @@ class tracking():
 
 
 
-                       detection_to_join = valid_matches[np.where(posible_features == np.amin(posible_features))[0]]
-
-
+                       #detection_to_join = valid_matches[np.where(posible_features == np.amin(posible_features))[0]]
+                       # cambio debido a que EfficientDet puede sacar el mismo bbxos de dif clases me quedo con la primera ocurrencia
+                       detection_to_join = valid_matches[np.argmin(posible_features)]
                        cluster_to_join = np.array([])
         #              look for the cluster containing this detection
                        "ANTIGUO funcionando bien hasta uso de det en vez de "

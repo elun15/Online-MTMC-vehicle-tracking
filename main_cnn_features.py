@@ -16,19 +16,11 @@ from scipy import interpolate
 from scipy.spatial.distance import pdist
 from scipy.spatial.distance import cdist
 
-import matplotlib.pyplot as plt
-# import torchvision.models
 import torch
 
-import torch.nn.functional as F
-from torchvision import transforms
-from sklearn.cluster import AgglomerativeClustering
-from sklearn.metrics import pairwise_distances
-from sklearn.preprocessing import normalize
-from matplotlib import colors as mcolors
-from matplotlib.patches import Rectangle
 
-import onnx
+from sklearn.metrics import pairwise_distances
+
 
 # Own modules
 from preprocessing_data import preprocess_data
@@ -36,22 +28,17 @@ import sct
 import camera
 import dataset
 from network import resnet_elg
-from network import joined_network
 from network import net_id_classifier
-from network import vgg
 import colors
 import display
 import features
-from thirdparty import sklearn_dunn
 import clustering
 import tracking
-import torchfile
 import torchvision.transforms as transforms
-from misc import nms
 
-from network import net_ristani
 import argparse
 import yaml
+from misc import nms
 
 
 parser = argparse.ArgumentParser(description='Training classifier pair of cars')
@@ -152,6 +139,7 @@ class mtmc():
 if __name__ == '__main__':
 
     # Decode CONFIG file information
+    tic1 = time.time()
     args = parser.parse_args()
     CONFIG = yaml.safe_load(open(args.ConfigPath, 'r'))
 
@@ -193,10 +181,7 @@ if __name__ == '__main__':
 
 
 
-    # model = "ResNet50_AIC20_basefocal_classifier_best.pth.tar"
-    # model = "ResNet50_AIC20_base_classifier_best.pth.tar"
-    # model = "ResNet50_AIC20_IDBasefocal_imaug_classifier_latest.pth.tar"
-    # # # # model = "ResNet50_AIC20_VeRi_focalnoimaug_classifier_best.pth.tar"
+
 
     # model = "ResNet50_AIC20_baseimaug_classifier_best.pth.tar"
     # model = "ResNet50_AIC20_baselayer5focal_classifier_latest.pth.tar"
@@ -210,31 +195,32 @@ if __name__ == '__main__':
     # model = "ResNet50_AIC20_VERI_layer5_focal_imaugclassifier_latest.pth.tar"
     # model = "ResNet50_AIC20_VERI_layer5_imaugclassifier_latest.pth.tar"
     # model = "ResNet50_AIC20_vERI_layer5_focal_imaug_prec94_classifier_best.pth.tar"
-
     # model = "ResNet50_AIC20_VERI_layer5_CE_imaug_1024classifier_best.pth.tar"
     # model = "ResNet50_AIC20_VERI_layer5_CE_imaug_512classifier_latest.pth.tar"
     # model = "ResNet50_AIC20_VERI_layer5_CE_imaug_4096classifier_best.pth.tar"
 
-
     # model = "ResNet50_AIC20_ristani_imaug_01_classifier_best.pth.tar"
     # model = "ResNet50_AIC20_VERI_ristani_lr01_imaug_classifier_best.pth.tar"
     # # # # #
-
-    model = CONFIG['MODEL']
-    model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'models/' + model)
-    # # # # # #
-    net = net_id_classifier.net_id_classifier('ResNet50', CONFIG['NUM_IDS'])
-    weights = torch.load(model_path)['state_dict']
-    net.load_state_dict(weights, strict=True)
+    #
+    #
 
 
 
     # net = net_ristani.net('ResNet50')
     # net.load_state_dict(weights, strict=True)
 
+    if CONFIG['MODEL'] == "Imagenet":
+               # Features model pretrined
+        net = resnet_elg.resnet50(pretrained=True)
 
-    # Features model pretrined
-    # net = resnet_elg.resnet50(pretrained=True)
+    else:
+        model = CONFIG['MODEL']
+        model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'models/' + model)
+
+        net = net_id_classifier.net_id_classifier('ResNet50', CONFIG['NUM_IDS'], CONFIG['SIZE_FC'])
+        weights = torch.load(model_path)['state_dict']
+        net.load_state_dict(weights, strict=True)
 
     net.cuda()
     net.eval()
@@ -256,6 +242,9 @@ if __name__ == '__main__':
 
     # Initialize sct strucure
     sct = sct.sct(mtmc)
+
+    toc2 = time.time()
+    print(toc2 - tic1, ' latency sec Elapsed')
 
     print('Loading SCT and homographies...')
     # For each set (train/test/both)
@@ -304,8 +293,9 @@ if __name__ == '__main__':
             tic = time.time()
 
             # Frames
-            for f in range(1,mtmc.max_frame[s] + 1):
-                # print(['Frame ' + str(f)])
+            for f in range(1,mtmc.max_frame[s] + 1): #mtmc.max_frame[s] + 1
+            # for f in range(1, 2110 + 1):
+            #     print(['Frame ' + str(f)])
 
 
                 mtmc.global_tracks.append(list())
@@ -325,8 +315,9 @@ if __name__ == '__main__':
                     sct_f_data = sct_array[sct_array[:, 0] == f, :]
 
                     #NMS
-                    # if sct_f_data.shape[0] != 0:
-                    #     sct_f_data = nms.non_max_suppression(sct_f_data, sct_f_data[:, 6])
+                    if CONFIG['NMS'] == True:
+                        if sct_f_data.shape[0] != 0:
+                            sct_f_data = nms.non_max_suppression(sct_f_data, sct_f_data[:, 6])
 
 
                     # Fill sct_f dictionary with current frame information
@@ -487,7 +478,7 @@ if __name__ == '__main__':
                             clust.clusters_frame[-1]['det'].append(clust.new_detection())
                             new_w = round(sct_f['w'][idx_det] + sct_f['w'][idx_det] * 0)
                             new_h = round(sct_f['h'][idx_det] + sct_f['h'][idx_det] * 0)
-                            # c_x = sct_f['x'][idx_det] + round(sct_f['w'][idx_det] / 2 )
+                            # c_x = sct_f['x'][idx_det] + round(sct_f['w'][idx_det] / 2
                             # c_y = sct_f['y'][idx_det] + round(sct_f['h'][idx_det] / 2 )
                             clust.clusters_frame[-1]['det'][-1]['x'] = sct_f['x'][idx_det] + round(sct_f['w'][idx_det] / 2 ) - round(new_w / 2)
                             clust.clusters_frame[-1]['det'][-1]['y'] = sct_f['y'][idx_det] + round(sct_f['h'][idx_det] / 2 ) - round(new_h / 2)
@@ -523,6 +514,7 @@ if __name__ == '__main__':
 
 
                 # CLUSTERS - TRACKS   ASSOCIATION
+
                 track.predict_new_locations()
                 # track.display_tracks()
                 # plt.title('Frame ' + str(f))
@@ -568,8 +560,8 @@ if __name__ == '__main__':
 
                         for det in range(mtmc.global_tracks[f][i]['det'].__len__()):
 
-                            new_w = round(mtmc.global_tracks[f][i]['det'][det]['w'] + mtmc.global_tracks[f][i]['det'][det]['w'] * 0.2)
-                            new_h = round(mtmc.global_tracks[f][i]['det'][det]['h'] + mtmc.global_tracks[f][i]['det'][det]['h'] * 0.2)
+                            new_w = round(mtmc.global_tracks[f][i]['det'][det]['w'] + mtmc.global_tracks[f][i]['det'][det]['w']* CONFIG['AUG_SIZE'])
+                            new_h = round(mtmc.global_tracks[f][i]['det'][det]['h'] + mtmc.global_tracks[f][i]['det'][det]['h']* CONFIG['AUG_SIZE'])
 
 
 
@@ -596,25 +588,7 @@ if __name__ == '__main__':
 
             a=1
             toc = time.time()
-            print( toc - tic, 'sec Elapsed' )
+            print(toc - tic, 'sec Elapsed total time' )
 
 
 
-#
-# bbox_replicated_tensor = aicc.data_transform(Image.fromarray(bbox_replicated))
-# bbox_replicated_tensor = torch.unsqueeze(bbox_replicated_tensor, dim=0)
-# net.cuda()
-# preds = net(bbox_replicated_tensor.cuda())
-# predictions_replicated = preds.topk(k=1)
-# #
-# bbox_img_tensor = aicc.data_transform(Image.fromarray(bbox_img))
-# bbox_img_tensor = torch.unsqueeze(bbox_img_tensor, dim=0)
-# net.cuda()
-# preds = net(bbox_img_tensor.cuda())
-# predictions_res_norm = preds.topk(k=1)
-#
-# square_bbox_tensor = aicc.data_transform(Image.fromarray(square_bbox))
-# square_bbox_tensor = torch.unsqueeze(square_bbox_tensor, dim=0)
-# net.cuda()
-# preds = net(square_bbox_tensor.cuda())
-# predictions_square_bbox_norm = preds.topk(k=1)

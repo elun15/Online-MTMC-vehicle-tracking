@@ -13,8 +13,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_cnn_features.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5058">
-              <caret line="327" column="17" selection-start-line="327" selection-start-column="17" selection-end-line="328" selection-end-column="92" />
+            <state relative-caret-position="674">
+              <caret line="564" lean-forward="true" selection-start-line="564" selection-end-line="564" />
               <folding>
                 <element signature="e#125#134#0" expanded="true" />
               </folding>
@@ -23,10 +23,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../anaconda3/envs/env_elg_37/lib/python3.7/site-packages/torchvision/transforms/transforms.py">
+        <entry file="file://$PROJECT_DIR$/../anaconda3/envs/env_elg_37/lib/python3.7/site-packages/torch/nn/modules/module.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="792">
-              <caret line="48" selection-start-line="48" selection-end-line="48" />
+            <state relative-caret-position="489">
+              <caret line="768" selection-start-line="768" selection-end-line="768" />
             </state>
           </provider>
         </entry>
@@ -34,8 +34,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/network/net_id_classifier.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="579">
+              <caret line="38" column="39" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/config4.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="8" selection-end-line="12" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/config6.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="8" lean-forward="true" selection-start-column="8" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -43,8 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sct.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1332">
-              <caret line="83" selection-start-line="83" selection-end-line="83" />
+            <state relative-caret-position="367">
+              <caret line="64" column="56" selection-start-line="64" selection-start-column="56" selection-end-line="64" selection-end-column="56" />
               <folding>
                 <element signature="e#108#117#0" expanded="true" />
               </folding>
@@ -53,19 +71,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tracking.py">
+        <entry file="file://$PROJECT_DIR$/config/config3.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8622">
-              <caret line="493" selection-start-line="493" selection-end-line="493" />
+            <state relative-caret-position="108">
+              <caret line="6" column="62" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Postprocessing/unsync.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="779">
-              <caret line="129" selection-start-line="129" selection-end-line="129" />
+            <state relative-caret-position="380">
+              <caret line="115" column="26" selection-start-line="115" selection-start-column="26" selection-end-line="115" selection-end-column="26" />
               <folding>
                 <element signature="e#179#314#0" />
                 <element signature="e#332#436#0" />
@@ -78,29 +96,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/config1.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="11" selection-start-column="11" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/config3.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/config7.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="17" selection-end-line="9" selection-end-column="19" />
+            <state relative-caret-position="216">
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -108,8 +108,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/config2.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="8" selection-start-column="8" selection-end-column="8" />
+            <state relative-caret-position="108">
+              <caret line="6" column="62" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
             </state>
           </provider>
         </entry>
@@ -131,6 +131,7 @@
       <find>mode</find>
       <find>f_id</find>
       <find>detec</find>
+      <find>check_unassigned_clusters</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -142,25 +143,25 @@
         <option value="$PROJECT_DIR$/network/resnet_elg.py" />
         <option value="$PROJECT_DIR$/clustering.py" />
         <option value="$PROJECT_DIR$/features.py" />
-        <option value="$PROJECT_DIR$/misc/nms.py" />
         <option value="$PROJECT_DIR$/config/config0.yaml" />
-        <option value="$PROJECT_DIR$/config/config5.yaml" />
-        <option value="$PROJECT_DIR$/config/config6.yaml" />
-        <option value="$PROJECT_DIR$/config/config7.yaml" />
-        <option value="$PROJECT_DIR$/config/config8.yaml" />
-        <option value="$PROJECT_DIR$/config/config9.yaml" />
-        <option value="$PROJECT_DIR$/network/net_id_classifier.py" />
-        <option value="$PROJECT_DIR$/tracking.py" />
-        <option value="$PROJECT_DIR$/config/config4.yaml" />
         <option value="$PROJECT_DIR$/config/config.yaml" />
-        <option value="$PROJECT_DIR$/config/config2.yaml" />
-        <option value="$PROJECT_DIR$/config/config3.yaml" />
         <option value="$PROJECT_DIR$/preprocessing_data/divide_subset_train_test_ids.py" />
         <option value="$PROJECT_DIR$/preprocessing_data/divide_datasets_per_ids.py" />
-        <option value="$PROJECT_DIR$/sct.py" />
+        <option value="$PROJECT_DIR$/config/config7.yaml" />
+        <option value="$PROJECT_DIR$/config/config9.yaml" />
+        <option value="$PROJECT_DIR$/config/config8.yaml" />
+        <option value="$PROJECT_DIR$/tracking.py" />
+        <option value="$PROJECT_DIR$/config/config5.yaml" />
+        <option value="$PROJECT_DIR$/config/config6.yaml" />
+        <option value="$PROJECT_DIR$/misc/nms.py" />
+        <option value="$PROJECT_DIR$/config/config4.yaml" />
+        <option value="$PROJECT_DIR$/config/config2.yaml" />
+        <option value="$PROJECT_DIR$/config/config3.yaml" />
         <option value="$PROJECT_DIR$/Postprocessing/unsync.py" />
+        <option value="$PROJECT_DIR$/network/net_id_classifier.py" />
         <option value="$PROJECT_DIR$/config/config1.yaml" />
         <option value="$PROJECT_DIR$/main_cnn_features.py" />
+        <option value="$PROJECT_DIR$/sct.py" />
       </list>
     </option>
   </component>
@@ -185,22 +186,12 @@
             <path>
               <item name="Online-MTMC-vehicle-tracking" type="b2602c69:ProjectViewProjectNode" />
               <item name="Online-MTMC-vehicle-tracking" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Online-MTMC-vehicle-tracking" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Online-MTMC-vehicle-tracking" type="462c0819:PsiDirectoryNode" />
-              <item name="network" type="462c0819:PsiDirectoryNode" />
+              <item name="misc" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Online-MTMC-vehicle-tracking" type="b2602c69:ProjectViewProjectNode" />
               <item name="Online-MTMC-vehicle-tracking" type="462c0819:PsiDirectoryNode" />
               <item name="Postprocessing" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Online-MTMC-vehicle-tracking" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Online-MTMC-vehicle-tracking" type="462c0819:PsiDirectoryNode" />
-              <item name="preprocessing_data" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -209,7 +200,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Repositories/Yet-Another-EfficientDet-Pytorch-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Train-cars-classifier" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -230,7 +221,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.unsync">
+  <component name="RunManager" selected="Python.main_cnn_features">
     <configuration name="divide_datasets_per_ids" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Online-MTMC-vehicle-tracking" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -343,20 +334,21 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-1" width="1922" height="1061" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19791667" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.19791667" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.81354165" visible="true" weight="0.2973822" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.81354165" weight="0.37801048" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8130208" weight="0.19476439" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.81354165" weight="0.31204188" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.18645833" side_tool="true" weight="0.2973822" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.18697916" side_tool="true" weight="0.2973822" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.3291536" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -373,13 +365,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tracking.py</url>
-          <line>481</line>
-          <option name="timeStamp" value="80" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main_cnn_features.py</url>
-          <line>290</line>
-          <option name="timeStamp" value="87" />
+          <line>367</line>
+          <option name="timeStamp" value="103" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -387,53 +374,47 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
-        <expression-string>plt.imshow(bbox_img)</expression-string>
+        <expression-string>print (weights)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>os.path.join(path_box,  '%s_%04d.jpg' % (c , num_box))</expression-string>
+        <expression-string>valid_matches[np.argmin(posible_features)]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.savetxt('/home/vpu/AICityChallengeTrack1/amilan-motchallenge-devkit/res/AIC20/ablation_study/v'+  str(i) + '/S02.txt', res, delimiter=',')</expression-string>
+        <expression-string>np.argmin(posible_features)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.savetxt('/home/vpu/AICityChallengeTrack1/amilan-motchallenge-devkit/res/AIC20/ablation_study/v'+  i + '/S02.txt', res, delimiter=',')</expression-string>
+        <expression-string>np.min(posible_features)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>sct_f_data2 = nms.non_max_suppression(sct_f_data, sct_f_data[:, 6])</expression-string>
+        <expression-string>np.amin(posible_features)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>import torch.nn.functional as F
-
-features_normalize = F.normalize(features, p=2)</expression-string>
+        <expression-string>posible_features == np.amin(posible_features)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>features_normalize2 = norm.l2_norm(features)</expression-string>
+        <expression-string>sct_f['w'] == sct_f['h']</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>import torch.nn.functional as F
-
-features_normalize = F.normalize(features, p=2, dim = 0)</expression-string>
+        <expression-string>np.loadtxt(dir_file_sct, delimiter=' ')</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>import torch.nn.functional as F
-
-features_normalize = F.normalize(features, p=2, dim=1)</expression-string>
+        <expression-string>np.loadtxt(dir_file_sct, delimiter='')</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
@@ -450,13 +431,6 @@ features_normalize = F.normalize(features, p=2, dim=1)</expression-string>
     <entry file="file://$PROJECT_DIR$/main_cnn_cls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-5076" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/thirdparty/sklearn_dunn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="105" selection-start-line="105" selection-end-line="105" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/misc/utils.py">
@@ -483,16 +457,6 @@ features_normalize = F.normalize(features, p=2, dim=1)</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clustering.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1853">
-          <caret line="121" selection-start-line="121" selection-end-line="121" />
-          <folding>
-            <element signature="e#128#146#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/preprocessing_data/preprocess_data.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -514,13 +478,6 @@ features_normalize = F.normalize(features, p=2, dim=1)</expression-string>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
           <caret line="353" column="41" selection-start-line="353" selection-start-column="41" selection-end-line="353" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../anaconda3/envs/env_elg_37/lib/python3.7/site-packages/torch/nn/modules/module.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="488" selection-start-line="488" selection-end-line="488" />
         </state>
       </provider>
     </entry>
@@ -555,13 +512,6 @@ features_normalize = F.normalize(features, p=2, dim=1)</expression-string>
           <folding>
             <element signature="e#127#139#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../anaconda3/envs/env_elg_37/lib/python3.7/site-packages/numpy/lib/npyio.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="1150" selection-start-line="1150" selection-end-line="1150" />
         </state>
       </provider>
     </entry>
@@ -607,41 +557,6 @@ features_normalize = F.normalize(features, p=2, dim=1)</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/misc/nms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="60" selection-start-line="4" selection-start-column="60" selection-end-line="4" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config8.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config9.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="8" selection-start-column="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config6.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="16" selection-end-line="9" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config5.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/config0.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -670,13 +585,6 @@ features_normalize = F.normalize(features, p=2, dim=1)</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/config4.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="64" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main_copy.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4808">
@@ -684,79 +592,94 @@ features_normalize = F.normalize(features, p=2, dim=1)</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_cnn_features.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5058">
-          <caret line="327" column="17" selection-start-line="327" selection-start-column="17" selection-end-line="328" selection-end-column="92" />
-          <folding>
-            <element signature="e#125#134#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../anaconda3/envs/env_elg_37/lib/python3.7/site-packages/torchvision/transforms/transforms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
+        <state relative-caret-position="506">
           <caret line="48" selection-start-line="48" selection-end-line="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/network/net_id_classifier.py">
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="306">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sct.py">
+    <entry file="file://$PROJECT_DIR$/thirdparty/sklearn_dunn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1332">
-          <caret line="83" selection-start-line="83" selection-end-line="83" />
-          <folding>
-            <element signature="e#108#117#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="288">
+          <caret line="105" selection-start-line="105" selection-end-line="105" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tracking.py">
+    <entry file="file://$PROJECT_DIR$/../anaconda3/envs/env_elg_37/lib/python3.7/site-packages/numpy/lib/npyio.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8622">
-          <caret line="493" selection-start-line="493" selection-end-line="493" />
+        <state relative-caret-position="206">
+          <caret line="774" selection-start-line="774" selection-end-line="774" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/config1.yaml">
+    <entry file="file://$PROJECT_DIR$/config/config9.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="11" selection-start-column="11" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config3.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+        <state relative-caret-position="180">
+          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/config7.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="17" selection-end-line="9" selection-end-column="19" />
+        <state relative-caret-position="54">
+          <caret line="3" column="12" lean-forward="true" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/config2.yaml">
+    <entry file="file://$PROJECT_DIR$/clustering.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="8" selection-start-column="8" selection-end-column="8" />
+        <state relative-caret-position="648">
+          <caret line="70" selection-start-line="70" selection-end-line="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config5.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config8.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/misc/nms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="60" selection-start-line="4" selection-start-column="60" selection-end-line="4" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tracking.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1780">
+          <caret line="436" column="8" selection-start-line="436" selection-start-column="8" selection-end-line="436" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config3.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="62" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Postprocessing/unsync.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="779">
-          <caret line="129" selection-start-line="129" selection-end-line="129" />
+        <state relative-caret-position="380">
+          <caret line="115" column="26" selection-start-line="115" selection-start-column="26" selection-end-line="115" selection-end-column="26" />
           <folding>
             <element signature="e#179#314#0" />
             <element signature="e#332#436#0" />
@@ -765,6 +688,68 @@ features_normalize = F.normalize(features, p=2, dim=1)</expression-string>
             <element signature="e#1452#1950#0" />
             <element signature="e#1963#2084#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../anaconda3/envs/env_elg_37/lib/python3.7/site-packages/torch/nn/modules/module.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="768" selection-start-line="768" selection-end-line="768" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config6.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="8" lean-forward="true" selection-start-column="8" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config4.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="8" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config2.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="62" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/network/net_id_classifier.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="579">
+          <caret line="38" column="39" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sct.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="64" column="56" selection-start-line="64" selection-start-column="56" selection-end-line="64" selection-end-column="56" />
+          <folding>
+            <element signature="e#108#117#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_cnn_features.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="674">
+          <caret line="564" lean-forward="true" selection-start-line="564" selection-end-line="564" />
+          <folding>
+            <element signature="e#125#134#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config1.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
         </state>
       </provider>
     </entry>
