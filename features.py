@@ -222,14 +222,9 @@ class features():
                             association_matrix[i, j] = 100
                             association_matrix[j, i] = 100
 
-
-
-
         # association_matrix = 1 - association_matrix
         # association_matrix = 10. * association_matrix
         # association_matrix[association_matrix == 0] = 1
-
-
 
         return dist_features, association_matrix
 
