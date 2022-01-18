@@ -24,6 +24,7 @@
 
 # Setup
 **Requirements**
+
 The repository has been tested in the following software.
 * Ubuntu 16.04
 * Python 3.7
@@ -31,6 +32,7 @@ The repository has been tested in the following software.
 * Pycharm
 
 **Anaconda environment**
+
 To create and setup the Anaconda Envirmorent run the following terminal command from the repository folder:
 ```
 $ conda env create -f env_MTMC.yaml
