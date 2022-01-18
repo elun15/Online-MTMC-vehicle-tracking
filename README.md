@@ -44,3 +44,11 @@ $ conda activate env_MTMC
 ```
 $ git clone https://github.com/elun15/Online-MTMC-vehicle-tracking.git
 ```
+
+# Citation
+
+If you find this code and work useful, please consider citing:
+
+
+
+
