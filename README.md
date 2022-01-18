@@ -19,3 +19,26 @@
 * **main_cnn_features.py** : main file to run
 * **sct.py** : module loading single camera tracking
 * **tracking.py**: tracking module
+* **env_MTMC.yaml** : Anaconda environment dependencies
+
+
+# Setup
+**Requirements**
+The repository has been tested in the following software.
+* Ubuntu 16.04
+* Python 3.7
+* Anaconda
+* Pycharm
+
+**Anaconda environment**
+To create and setup the Anaconda Envirmorent run the following terminal command from the repository folder:
+```
+$ conda env create -f env_MTMC.yaml
+$ conda activate env_MTMC
+```
+
+**Clone repository**
+
+```
+$ git clone https://github.com/elun15/Online-MTMC-vehicle-tracking.git
+```
