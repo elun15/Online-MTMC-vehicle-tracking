@@ -154,6 +154,11 @@ def  process(mode,offset):
             print("It cost %f sec" % (tEnd - tStart))
 
 
+
+
+            
+
+
 if __name__ == '__main__':
 
     mode = 'validation'
