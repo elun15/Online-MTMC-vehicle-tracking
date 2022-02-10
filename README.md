@@ -3,7 +3,7 @@
 
 
 
-# Setup
+# Setup & Running
 **Requirements**
 
 The repository has been tested in the following software.
