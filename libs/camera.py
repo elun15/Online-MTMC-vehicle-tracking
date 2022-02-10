@@ -48,9 +48,9 @@ class camera():
         yw = (prj[1] / prj[2]).item() # longitude
         return xw, yw
 
-    def load_homography_matrix(self,c):
+    def load_homography_matrix(self,s,c):
 
-        file = os.path.join(self.calibration_dir , c,'calibration.txt')
+        file = os.path.join(self.calibration_dir ,s, c,'calibration.txt')
         idf = open(file, 'r')
         line = idf.readline()
         line2 = idf.readline()

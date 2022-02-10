@@ -91,10 +91,10 @@ def  process(mode,offset):
     root_dir = os.path.dirname(os.path.abspath(__file__))
 
     # Original dataset directory
-    dataset_dir = os.path.join('/home/vpu/Datasets/AIC20', mode)
+    dataset_dir = os.path.join('./../datasets/AIC19', mode)
 
-    scenarios = os.listdir(dataset_dir)
-    for s in ['S01 ']:
+    scenarios = ['S02']
+    for s in scenarios:
 
         cameras = os.listdir(os.path.join(dataset_dir, s))
 
@@ -161,7 +161,7 @@ def  process(mode,offset):
 
 if __name__ == '__main__':
 
-    mode = 'validation'
+    mode = 'test/'
     process(mode,offset)
 
 

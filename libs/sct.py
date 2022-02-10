@@ -69,7 +69,7 @@ class sct():
 
 
             if flag_filter_size == True:
-                data = data[(data[:, 4] * data[:, 5]) > 2000, :] #3350 4150 0.2
+                data = data[(data[:, 4] * data[:, 5]) > 2000, :]
 
 
 

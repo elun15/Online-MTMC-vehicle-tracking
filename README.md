@@ -16,11 +16,13 @@
 * **dataset.py** : class for dataset transformations
 * **display.py** : class for displaying
 * **features.py** : feature extractor module
-* **main_cnn_features.py** : main file to run
+* **main.py** : main file to run 
 * **sct.py** : module loading single camera tracking
 * **tracking.py**: tracking module
 * **env_MTMC.yaml** : Anaconda environment dependencies
 
+
+Run python main.py --ConfigPath ./config/config.yaml
 
 # Setup
 **Requirements**
