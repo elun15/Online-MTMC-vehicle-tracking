@@ -2,27 +2,6 @@
 
 
 
-# Files and folders
-* **./postprocessing** : for post-processing scripts
-* **./config** : for configuration .yaml files
-* **./misc** : misc and utils scripts
-* **./network** : for different network architectures definitions
-* **./preprocessing_data** : scripts to process different datasets
-* **./scripts** : sh script to run several runnings with different config files
-* **./thirdparty** : 3rd party algorithms
-* **camera.py** : class for camera transformations 
-* **clustering.py** : clustering module
-* **colors.py** : indistinguishable colors class
-* **dataset.py** : class for dataset transformations
-* **display.py** : class for displaying
-* **features.py** : feature extractor module
-* **main.py** : main file to run 
-* **sct.py** : module loading single camera tracking
-* **tracking.py**: tracking module
-* **env_MTMC.yaml** : Anaconda environment dependencies
-
-
-Run python main.py --ConfigPath ./config/config.yaml
 
 # Setup
 **Requirements**
@@ -47,10 +26,44 @@ $ conda activate env_MTMC
 $ git clone https://github.com/elun15/Online-MTMC-vehicle-tracking.git
 ```
 
+**Download AIC19 dataset**
+
+The dataset can be downloaded at https://www.aicitychallenge.org/track1-download/
+
+**Prepare AIC19 dataset**
+
+Move the downloaded folders aic19-track1-mtmc/train and aic19-track1-mtmc/test to the ./datasets/ repository folder.
+
+Preprocess the data to extract the images from the .avi files by running:
+
+python preprocess_data.py
+
+The set of data can be changed, by default it will preprocess /test/S02 scenario.
+
+
+**Download pretrained model**
+
+The model weights trained on AIC19 S01 scenario can be downloaded at:
+http://www-vpu.eps.uam.es/publications/Online-MTMC-Tracking/ResNet50_AIC20_VERI_layer5_imaugclassifier_latest.pth
+
+Place the weights file under ./models/
+
+Training details can be found in the paper.
+
+
+**Running**
+
+To run the tracking algorithm over the S02 scenario run:
+
+
+python main.py --ConfigPath ./config/config.yaml  
+
+
+
+
 # Citation
 
 If you find this code and work useful, please consider citing:
-
 
 
 
