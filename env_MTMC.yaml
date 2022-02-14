@@ -164,7 +164,6 @@ dependencies:
   - yaml=0.1.7=h14c3975_1001
   - zlib=1.2.11=h14c3975_1004
   - zstd=1.4.0=h3b9ef0a_0
-  - pip:
-    - torch==1.0.1
+
 prefix: /opt/miniconda2/envs/env_elg_37
 
