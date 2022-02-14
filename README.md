@@ -32,7 +32,7 @@ The dataset can be downloaded at https://www.aicitychallenge.org/track1-download
 
 **Prepare AIC19 dataset**
 
-Move the downloaded folders aic19-track1-mtmc/train and aic19-track1-mtmc/test to the ./datasets/ repository folder.
+Move the downloaded folders aic19-track1-mtmc/train and aic19-track1-mtmc/test to the ./datasets/AIC19/ repository folder.
 
 Preprocess the data to extract the images from the .avi files by running:
 
