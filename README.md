@@ -48,7 +48,7 @@ The set of data can be changed, by default it will preprocess */test/S02* scenar
 **Download pretrained model**
 
 The model weights trained on AIC19 S01 scenario can be downloaded at:
-http://www-vpu.eps.uam.es/publications/Online-MTMC-Tracking/ResNet50_AIC20_VERI_layer5_imaugclassifier_latest.pth
+http://www-vpu.eps.uam.es/publications/Online-MTMC-Tracking/ResNet50_AIC20_VERI_layer5_imaugclassifier_latest.pth.tar
 
 
 Place the weights file under *./models/*
