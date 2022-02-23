@@ -106,28 +106,18 @@ def  process(file,offset, scenario, dataset_dir, output_file,i):
 
     np.savetxt(output_file, res, delimiter=',')
 
-    os.makedirs('/home/vpu/AICityChallengeTrack/amilan-motchallenge-devkit/res/AIC20/ablation_study/v'+  str(i),exist_ok=True)
-    np.savetxt('/home/vpu/AICityChallengeTrack/amilan-motchallenge-devkit/res/AIC20/ablation_study/v'+  str(i) + '/S02.txt', res, delimiter=',')
+    #os.makedirs('/home/vpu/AICityChallengeTrack/amilan-motchallenge-devkit/res/AIC20/ablation_study/v'+  str(i),exist_ok=True)
+    #np.savetxt('/home/vpu/AICityChallengeTrack/amilan-motchallenge-devkit/res/AIC20/ablation_study/v'+  str(i) + '/S02.txt', res, delimiter=',')
 
 if __name__ == '__main__':
 
     scenario = 'S02'
 
-    for i in range(206,208):
+    results_file = '.path to the results file'.txt'
+    unsync_file = '.path for the saved unsync results .txt'
 
+    dataset_dir = './../datasets/AIC19/validation'
 
-        results_file = './../ablation_study/' + scenario + '/v'+str(i)+ '.txt'
-        unsync_file = './../ablation_study/' + scenario + '/v' +str(i) + '_unsync.txt'
+    process(results_file,offset, scenario, dataset_dir, unsync_file,i)
 
-        dataset_dir = '/home/vpu/Datasets/AIC20/validation'
-
-        process(results_file,offset, scenario, dataset_dir, unsync_file,i)
-
-    # v = 'v164'
-    #
-    # results_file = './../ablation_study/' + scenario + '/' + v + '.txt'
-    # unsync_file = './../ablation_study/' + scenario + '/' + v + '_unsync.txt'
-    #
-    # dataset_dir = '/home/vpu/Datasets/AIC20/validation'
-    #
-    # process(results_file, offset, scenario, dataset_dir, unsync_file, v)
+   
